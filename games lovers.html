@@ -1,1084 +1,29 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="hub.css">
     <title>Love & Coklat · Romansa Premium</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;400;500;600&display=swap" rel="stylesheet">
 
-    <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        :root {
-            --choco-light: #f8f0ea;
-            --choco-cream: #fdfaf7;
-            --choco-milk: #dccfc4;
-            --choco-dark: #6b4c34;
-            --choco-brown: #a67c5b;
-            --choco-deep: #4d3422;
-            --choco-gold: #c8a68b;
-            --love-red: #c0392b;
-            --love-soft: #e8c4b8;
-            --shadow-soft: 0 8px 32px rgba(90, 60, 40, 0.10);
-            --shadow-medium: 0 16px 48px rgba(90, 60, 40, 0.14);
-            --shadow-heavy: 0 24px 64px rgba(90, 60, 40, 0.18);
-            --radius-card: 48px;
-            --radius-inner: 32px;
-            --transition-smooth: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        body {
-            background: var(--choco-light);
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(166, 124, 91, 0.04) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(192, 57, 43, 0.03) 0%, transparent 50%);
-        }
-
-        /* ===== CARD UTAMA ===== */
-        .love-card {
-            max-width: 1240px;
-            width: 100%;
-            background: var(--choco-cream);
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow-heavy), 0 0 0 1px rgba(166, 124, 91, 0.08);
-            padding: 2.8rem 3rem 3rem;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-        }
-
-        /* ===== HIASAN COKLAT ===== */
-        .choco-deco {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.04;
-            font-size: 8rem;
-        }
-        .choco-deco-1 {
-            top: -30px;
-            right: -30px;
-            transform: rotate(20deg);
-            font-size: 14rem;
-        }
-        .choco-deco-2 {
-            bottom: -40px;
-            left: -40px;
-            transform: rotate(-15deg);
-            font-size: 16rem;
-        }
-        .choco-deco-3 {
-            top: 40%;
-            right: 10px;
-            font-size: 4rem;
-            opacity: 0.02;
-            transform: rotate(45deg);
-        }
-        .choco-deco-4 {
-            bottom: 20%;
-            left: 20px;
-            font-size: 3.5rem;
-            opacity: 0.02;
-            transform: rotate(-30deg);
-        }
-        .choco-deco-5 {
-            top: 20%;
-            left: 10%;
-            font-size: 2rem;
-            opacity: 0.015;
-        }
-
-        /* Chocolate sprinkles */
-        .sprinkles {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.06;
-        }
-        .sprinkles span {
-            display: inline-block;
-            width: 12px;
-            height: 4px;
-            border-radius: 4px;
-            background: var(--choco-brown);
-            position: absolute;
-        }
-        .sprinkles span:nth-child(1) {
-            top: 15%;
-            left: 5%;
-            transform: rotate(30deg);
-            width: 18px;
-        }
-        .sprinkles span:nth-child(2) {
-            top: 25%;
-            right: 8%;
-            transform: rotate(-45deg);
-            width: 14px;
-            background: var(--love-red);
-        }
-        .sprinkles span:nth-child(3) {
-            bottom: 30%;
-            left: 3%;
-            transform: rotate(60deg);
-            width: 20px;
-        }
-        .sprinkles span:nth-child(4) {
-            bottom: 20%;
-            right: 5%;
-            transform: rotate(-20deg);
-            width: 16px;
-            background: var(--love-red);
-        }
-        .sprinkles span:nth-child(5) {
-            top: 60%;
-            left: 15%;
-            transform: rotate(80deg);
-            width: 12px;
-        }
-
-        /* ===== TOP DECOR ===== */
-        .choco-top-line {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 1.6rem;
-            position: relative;
-            z-index: 1;
-        }
-        .choco-top-line span {
-            width: 48px;
-            height: 5px;
-            border-radius: 12px;
-            background: linear-gradient(90deg, #d6b29d, #b28b72, #a67c5b);
-            opacity: 0.25;
-            transition: var(--transition-smooth);
-        }
-        .choco-top-line span:nth-child(odd) {
-            width: 32px;
-            opacity: 0.15;
-        }
-        .choco-top-line span:nth-child(3) {
-            background: linear-gradient(90deg, #c0392b, #b28b72);
-            width: 40px;
-            opacity: 0.2;
-        }
-
-        /* ===== HEADER ===== */
-        .header-love {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 2px solid rgba(220, 207, 196, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-        .header-love::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 120px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--love-red), var(--choco-brown));
-            opacity: 0.4;
-        }
-
-        .title-love {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-        .title-love .heart-icon {
-            color: var(--love-red);
-            font-size: 2rem;
-            animation: heartbeat 2s ease-in-out infinite;
-            filter: drop-shadow(0 2px 8px rgba(192, 57, 43, 0.15));
-        }
-        @keyframes heartbeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            14% {
-                transform: scale(1.18);
-            }
-            28% {
-                transform: scale(1);
-            }
-            42% {
-                transform: scale(1.12);
-            }
-            70% {
-                transform: scale(1);
-            }
-        }
-
-        .title-love h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 2.6rem;
-            color: var(--choco-deep);
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 12px rgba(90, 60, 40, 0.06);
-        }
-        .title-love h1 span {
-            font-weight: 400;
-            color: var(--choco-brown);
-            opacity: 0.6;
-        }
-
-        .sub-love {
-            background: rgba(237, 227, 219, 0.6);
-            backdrop-filter: blur(8px);
-            padding: 0.45rem 1.6rem;
-            border-radius: 60px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--choco-dark);
-            border: 1px solid rgba(220, 207, 196, 0.5);
-            box-shadow: inset 0 1px 4px rgba(255, 235, 220, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .sub-love i {
-            color: var(--love-red);
-            opacity: 0.6;
-        }
-
-        /* ===== GAME SECTION ===== */
-        .game-love-section {
-            background: linear-gradient(145deg, #fdfaf7, #f8f2eb);
-            border-radius: var(--radius-inner);
-            padding: 2rem 2rem 1.8rem;
-            margin: 1.8rem 0 2.4rem;
-            border: 1px solid rgba(220, 207, 196, 0.3);
-            box-shadow: inset 0 2px 16px rgba(180, 140, 110, 0.04), var(--shadow-soft);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .game-love-section::before {
-            content: '♡';
-            position: absolute;
-            top: -30px;
-            right: -10px;
-            font-size: 8rem;
-            opacity: 0.03;
-            color: var(--love-red);
-        }
-        .game-love-section::after {
-            content: '🍫';
-            position: absolute;
-            bottom: -20px;
-            left: -10px;
-            font-size: 6rem;
-            opacity: 0.02;
-            transform: rotate(10deg);
-        }
-
-        .game-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 1.6rem;
-        }
-        .game-header .game-icon {
-            font-size: 1.6rem;
-            color: var(--choco-brown);
-            background: rgba(237, 227, 219, 0.5);
-            padding: 10px 14px;
-            border-radius: 30px;
-            border: 1px solid rgba(220, 207, 196, 0.3);
-            backdrop-filter: blur(4px);
-        }
-        .game-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            font-size: 1.5rem;
-            color: var(--choco-deep);
-        }
-        .game-header h2 strong {
-            font-weight: 700;
-            color: var(--choco-brown);
-        }
-        .game-header .game-badge {
-            margin-left: auto;
-            font-size: 0.7rem;
-            background: rgba(192, 57, 43, 0.06);
-            padding: 0.25rem 1rem;
-            border-radius: 60px;
-            color: var(--love-red);
-            border: 1px solid rgba(192, 57, 43, 0.1);
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .love-match-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            max-width: 420px;
-            margin: 0 auto 1.4rem;
-        }
-        .love-card-item {
-            aspect-ratio: 1/1;
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.4rem;
-            background: #fffcf9;
-            border: 1.5px solid rgba(220, 207, 196, 0.3);
-            box-shadow: 0 4px 14px rgba(130, 80, 50, 0.04);
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-        }
-        .love-card-item:hover:not(.matched) {
-            transform: translateY(-3px);
-            border-color: var(--choco-brown);
-            box-shadow: 0 8px 24px rgba(130, 80, 50, 0.08);
-        }
-        .love-card-item:active:not(.matched) {
-            transform: scale(0.94);
-        }
-        .love-card-item.matched {
-            background: rgba(237, 227, 219, 0.4);
-            border-color: rgba(166, 124, 91, 0.2);
-            pointer-events: none;
-            transform: scale(0.92);
-            opacity: 0.7;
-        }
-        .love-card-item.matched i {
-            opacity: 0.5;
-        }
-        .love-card-item .card-back {
-            color: #c8ad98;
-            opacity: 0.3;
-            font-size: 1.8rem;
-        }
-        .love-card-item .card-front {
-            color: var(--love-red);
-        }
-
-        .game-status {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 4px;
-            padding: 0 6px;
-        }
-        .game-status .score {
-            font-size: 0.9rem;
-            color: var(--choco-dark);
-            background: rgba(237, 227, 219, 0.5);
-            padding: 0.35rem 1.4rem;
-            border-radius: 60px;
-            border: 1px solid rgba(220, 207, 196, 0.3);
-            font-weight: 500;
-            backdrop-filter: blur(4px);
-        }
-        .game-status .score i {
-            color: var(--love-red);
-            margin-right: 8px;
-            opacity: 0.7;
-        }
-        .game-status .score strong {
-            font-weight: 600;
-            color: var(--choco-deep);
-        }
-        .btn-reset-love {
-            background: rgba(237, 227, 219, 0.6);
-            border: 1px solid rgba(220, 207, 196, 0.3);
-            padding: 0.45rem 1.6rem;
-            border-radius: 60px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--choco-dark);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-reset-love:hover {
-            background: rgba(220, 207, 196, 0.4);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-soft);
-        }
-        .btn-reset-love:active {
-            transform: scale(0.96);
-        }
-
-        /* ===== PERSONAL LOVE NOTE ===== */
-        .personal-love-section {
-            margin: 2.2rem 0 2rem;
-            padding-top: 0.8rem;
-            border-top: 2px dashed rgba(220, 207, 196, 0.4);
-            position: relative;
-            z-index: 1;
-        }
-        .personal-love-section .section-label {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 1rem;
-        }
-        .personal-love-section .section-label i {
-            color: var(--love-red);
-            font-size: 1.4rem;
-            opacity: 0.5;
-        }
-        .personal-love-section .section-label span {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            font-size: 1.15rem;
-            color: var(--choco-deep);
-            letter-spacing: 0.3px;
-        }
-        .personal-love-section .section-label .line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(214, 178, 157, 0.4), transparent);
-        }
-
-        .love-note-box {
-            background: #fffcf9;
-            border-radius: 28px;
-            padding: 1.4rem 1.8rem;
-            border: 1px solid rgba(220, 207, 196, 0.25);
-            box-shadow: inset 0 2px 12px rgba(180, 140, 110, 0.03);
-            transition: var(--transition-smooth);
-            min-height: 80px;
-            position: relative;
-        }
-        .love-note-box:focus-within {
-            border-color: var(--choco-brown);
-            box-shadow: 0 0 0 4px rgba(166, 124, 91, 0.06), inset 0 2px 12px rgba(180, 140, 110, 0.03);
-        }
-        .love-note-box .editable-love {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            line-height: 1.8;
-            color: var(--choco-deep);
-            outline: none;
-            min-height: 56px;
-            padding: 0.2rem 0;
-            word-break: break-word;
-            font-weight: 300;
-            letter-spacing: 0.2px;
-        }
-        .love-note-box .editable-love:empty::before {
-            content: "💌 Tulis pesan cinta atau kata-kata romantis di sini...";
-            color: #b8a091;
-            font-style: italic;
-            font-weight: 300;
-            opacity: 0.6;
-        }
-        .love-note-box .hint-edit {
-            text-align: right;
-            font-size: 0.6rem;
-            color: #c8ad98;
-            opacity: 0.35;
-            margin-top: 4px;
-            letter-spacing: 0.4px;
-            font-weight: 300;
-        }
-        .love-note-box .hint-edit i {
-            margin-right: 4px;
-        }
-
-        /* ===== EMAIL SEND SECTION (Google Email) ===== */
-        .email-send-section {
-            margin-top: 1.2rem;
-            padding: 1.4rem 1.8rem;
-            background: linear-gradient(145deg, #fdfaf7, #f8f2eb);
-            border-radius: 28px;
-            border: 1px solid rgba(220, 207, 196, 0.2);
-            box-shadow: inset 0 2px 12px rgba(180, 140, 110, 0.02);
-            position: relative;
-            overflow: hidden;
-        }
-        .email-send-section::before {
-            content: '✉️';
-            position: absolute;
-            bottom: -30px;
-            right: -20px;
-            font-size: 8rem;
-            opacity: 0.02;
-            transform: rotate(-10deg);
-        }
-
-        .email-send-section .email-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
-        .email-send-section .email-header i {
-            color: var(--choco-brown);
-            font-size: 1.2rem;
-            opacity: 0.6;
-        }
-        .email-send-section .email-header h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            font-size: 1rem;
-            color: var(--choco-deep);
-            opacity: 0.8;
-        }
-        .email-send-section .email-header .badge-email {
-            margin-left: auto;
-            font-size: 0.55rem;
-            background: rgba(166, 124, 91, 0.08);
-            padding: 0.15rem 0.8rem;
-            border-radius: 60px;
-            color: var(--choco-brown);
-            border: 1px solid rgba(166, 124, 91, 0.1);
-            font-weight: 400;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .email-send-section .email-header .badge-email i {
-            color: #ea4335;
-            opacity: 0.6;
-        }
-
-        .email-form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-        }
-        .email-form-row .email-input-wrap {
-            flex: 1;
-            min-width: 200px;
-            position: relative;
-        }
-        .email-form-row .email-input-wrap i {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--choco-brown);
-            opacity: 0.3;
-            font-size: 0.9rem;
-        }
-        .email-form-row input[type="email"] {
-            width: 100%;
-            padding: 0.65rem 1rem 0.65rem 2.6rem;
-            border: 1px solid rgba(220, 207, 196, 0.3);
-            border-radius: 60px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            background: #fffcf9;
-            color: var(--choco-deep);
-            transition: var(--transition-smooth);
-            outline: none;
-        }
-        .email-form-row input[type="email"]:focus {
-            border-color: var(--choco-brown);
-            box-shadow: 0 0 0 4px rgba(166, 124, 91, 0.06);
-        }
-        .email-form-row input[type="email"]::placeholder {
-            color: #b8a091;
-            font-weight: 300;
-            opacity: 0.6;
-        }
-
-        .btn-send-email {
-            background: var(--choco-brown);
-            color: white;
-            border: none;
-            padding: 0.65rem 1.8rem;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 16px rgba(166, 124, 91, 0.2);
-            white-space: nowrap;
-        }
-        .btn-send-email:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(166, 124, 91, 0.25);
-            background: #8d6b53;
-        }
-        .btn-send-email:active {
-            transform: scale(0.96);
-        }
-        .btn-send-email:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .btn-send-email i {
-            font-size: 0.9rem;
-        }
-
-        .email-status {
-            margin-top: 0.8rem;
-            font-size: 0.75rem;
-            color: var(--choco-dark);
-            opacity: 0.6;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .email-status i {
-            font-size: 0.7rem;
-        }
-        .email-status .success {
-            color: #27ae60;
-            opacity: 1;
-        }
-        .email-status .error {
-            color: #e74c3c;
-            opacity: 1;
-        }
-        .email-status .info {
-            color: var(--choco-brown);
-            opacity: 0.8;
-        }
-        .email-status a {
-            color: var(--choco-brown);
-            text-decoration: underline;
-            font-weight: 500;
-        }
-
-        /* ===== DIVIDER ===== */
-        .chocolate-love-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            margin: 1.8rem 0 1.4rem;
-            position: relative;
-            z-index: 1;
-        }
-        .chocolate-love-divider .divider-line {
-            flex: 1;
-            max-width: 120px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(166, 124, 91, 0.2));
-        }
-        .chocolate-love-divider .divider-line.right {
-            background: linear-gradient(90deg, rgba(166, 124, 91, 0.2), transparent);
-        }
-        .chocolate-love-divider span {
-            font-size: 0.7rem;
-            color: var(--choco-brown);
-            font-weight: 300;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: var(--choco-light);
-            padding: 0.2rem 1.6rem;
-            border-radius: 60px;
-            border: 1px solid rgba(220, 207, 196, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .chocolate-love-divider span i {
-            color: var(--love-red);
-            opacity: 0.5;
-            font-size: 0.8rem;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer-love {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(243, 237, 232, 0.5);
-            backdrop-filter: blur(8px);
-            border-radius: 80px;
-            padding: 0.9rem 2.2rem 0.9rem 2.6rem;
-            margin-top: 1.8rem;
-            border: 1px solid rgba(220, 207, 196, 0.2);
-            box-shadow: inset 0 1px 6px rgba(255, 235, 220, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-        .footer-love p {
-            font-style: italic;
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            color: var(--choco-deep);
-            font-size: 1.05rem;
-            letter-spacing: 0.2px;
-            opacity: 0.8;
-        }
-        .footer-love p i {
-            color: var(--love-red);
-            margin-right: 6px;
-            opacity: 0.4;
-        }
-        .footer-love .credit {
-            font-style: normal;
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            font-size: 0.7rem;
-            color: var(--choco-dark);
-            background: rgba(237, 227, 219, 0.4);
-            padding: 0.25rem 1.4rem;
-            border-radius: 60px;
-            border: 1px solid rgba(220, 207, 196, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .footer-love .credit i {
-            color: var(--love-red);
-            opacity: 0.4;
-        }
-
-        /* ===== BOTTOM ACCENT ===== */
-        .bottom-accent {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 1.4rem;
-            gap: 8px;
-            opacity: 0.15;
-            position: relative;
-            z-index: 1;
-        }
-        .bottom-accent span {
-            height: 4px;
-            border-radius: 20px;
-            background: var(--choco-brown);
-        }
-        .bottom-accent span:nth-child(1) {
-            width: 40px;
-        }
-        .bottom-accent span:nth-child(2) {
-            width: 24px;
-            background: var(--love-red);
-        }
-        .bottom-accent span:nth-child(3) {
-            width: 16px;
-        }
-        .bottom-accent span:nth-child(4) {
-            width: 8px;
-            background: var(--love-red);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media screen and (max-width: 968px) {
-            .love-card {
-                padding: 2rem 1.8rem 2.2rem;
-            }
-            .title-love h1 {
-                font-size: 2.2rem;
-            }
-            .love-match-grid {
-                max-width: 360px;
-                gap: 12px;
-            }
-            .email-form-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .btn-send-email {
-                justify-content: center;
-                padding: 0.65rem;
-            }
-        }
-
-        @media screen and (max-width: 640px) {
-            body {
-                padding: 1rem;
-            }
-            .love-card {
-                padding: 1.4rem 1rem 1.6rem;
-                border-radius: 32px;
-            }
-            .title-love h1 {
-                font-size: 1.7rem;
-            }
-            .title-love .heart-icon {
-                font-size: 1.5rem;
-            }
-            .sub-love {
-                font-size: 0.65rem;
-                padding: 0.25rem 1rem;
-                gap: 6px;
-            }
-            .header-love {
-                margin-bottom: 1.2rem;
-                padding-bottom: 0.8rem;
-            }
-            .header-love::after {
-                width: 80px;
-            }
-            .game-love-section {
-                padding: 1.2rem 0.8rem 1.2rem;
-                border-radius: 24px;
-                margin: 1.2rem 0 1.6rem;
-            }
-            .game-header h2 {
-                font-size: 1.15rem;
-            }
-            .game-header .game-badge {
-                display: none;
-            }
-            .love-match-grid {
-                gap: 10px;
-                max-width: 300px;
-            }
-            .love-card-item {
-                border-radius: 18px;
-                font-size: 1.8rem;
-            }
-            .game-status .score {
-                font-size: 0.75rem;
-                padding: 0.2rem 1rem;
-            }
-            .btn-reset-love {
-                font-size: 0.7rem;
-                padding: 0.3rem 1.2rem;
-            }
-            .personal-love-section {
-                margin: 1.4rem 0 1.2rem;
-            }
-            .personal-love-section .section-label span {
-                font-size: 1rem;
-            }
-            .love-note-box {
-                padding: 1rem 1.2rem;
-                border-radius: 20px;
-                min-height: 60px;
-            }
-            .love-note-box .editable-love {
-                font-size: 0.9rem;
-                line-height: 1.6;
-                min-height: 44px;
-            }
-            .email-send-section {
-                padding: 1rem 1.2rem;
-                border-radius: 20px;
-            }
-            .email-form-row input[type="email"] {
-                font-size: 0.8rem;
-                padding: 0.55rem 1rem 0.55rem 2.4rem;
-            }
-            .btn-send-email {
-                font-size: 0.8rem;
-                padding: 0.55rem;
-            }
-            .chocolate-love-divider {
-                gap: 10px;
-                margin: 1.2rem 0 1rem;
-            }
-            .chocolate-love-divider span {
-                font-size: 0.55rem;
-                padding: 0.15rem 1rem;
-                letter-spacing: 2px;
-                gap: 6px;
-            }
-            .chocolate-love-divider .divider-line {
-                max-width: 60px;
-            }
-            .footer-love {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-                padding: 1rem 1.2rem;
-                border-radius: 40px;
-            }
-            .footer-love p {
-                font-size: 0.9rem;
-            }
-            .footer-love .credit {
-                font-size: 0.6rem;
-                padding: 0.15rem 1rem;
-            }
-            .choco-top-line span {
-                width: 28px;
-                height: 4px;
-            }
-            .choco-top-line span:nth-child(odd) {
-                width: 20px;
-            }
-            .bottom-accent span:nth-child(1) {
-                width: 28px;
-            }
-            .bottom-accent span:nth-child(2) {
-                width: 16px;
-            }
-            .bottom-accent span:nth-child(3) {
-                width: 10px;
-            }
-            .choco-deco-1,
-            .choco-deco-2 {
-                font-size: 8rem;
-                opacity: 0.02;
-            }
-        }
-
-        @media screen and (max-width: 400px) {
-            .love-match-grid {
-                gap: 8px;
-                max-width: 240px;
-            }
-            .love-card-item {
-                border-radius: 14px;
-                font-size: 1.4rem;
-            }
-            .title-love h1 {
-                font-size: 1.4rem;
-            }
-            .game-header h2 {
-                font-size: 1rem;
-            }
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 5px;
-            background: var(--choco-light);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--choco-milk);
-            border-radius: 20px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--choco-brown);
-        }
-
-        /* ===== LOADING SPINNER ===== */
-        .spinner {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.7s ease-in-out infinite;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ===== TOAST NOTIFICATION ===== */
-        .toast-notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            max-width: 380px;
-            width: 90%;
-            padding: 1rem 1.6rem;
-            border-radius: 20px;
-            background: var(--choco-deep);
-            color: #fdfaf7;
-            box-shadow: var(--shadow-heavy);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 10000;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .toast-notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .toast-notification .toast-icon {
-            font-size: 1.6rem;
-            flex-shrink: 0;
-        }
-        .toast-notification .toast-content {
-            flex: 1;
-        }
-        .toast-notification .toast-content .toast-title {
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        .toast-notification .toast-content .toast-message {
-            font-weight: 300;
-            font-size: 0.8rem;
-            opacity: 0.8;
-            margin-top: 2px;
-        }
-        .toast-notification.success {
-            background: #2d5a3d;
-            border-color: rgba(46, 204, 113, 0.2);
-        }
-        .toast-notification.error {
-            background: #6b2e2e;
-            border-color: rgba(231, 76, 60, 0.2);
-        }
-        .toast-notification.info {
-            background: #3d5a6b;
-            border-color: rgba(52, 152, 219, 0.2);
-        }
-        .toast-notification .toast-close {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0 4px;
-            transition: 0.2s;
-        }
-        .toast-notification .toast-close:hover {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        @media screen and (max-width: 640px) {
-            .toast-notification {
-                bottom: 16px;
-                right: 16px;
-                left: 16px;
-                width: auto;
-                padding: 0.8rem 1.2rem;
-                font-size: 0.8rem;
-                border-radius: 16px;
-            }
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="love-card">
 
-        <!-- ===== HIASAN COKLAT ===== -->
+        <!-- HIASAN COKLAT -->
         <div class="choco-deco choco-deco-1">🍫</div>
         <div class="choco-deco choco-deco-2">🍫</div>
         <div class="choco-deco choco-deco-3">❤️</div>
@@ -1086,152 +31,292 @@
         <div class="choco-deco choco-deco-5">💕</div>
 
         <div class="sprinkles">
-            <span></span><span></span><span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <!-- Top Decor -->
+        <!-- TOP DECOR -->
         <div class="choco-top-line">
-            <span></span><span></span><span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
         <!-- HEADER -->
         <header class="header-love">
+
             <div class="title-love">
                 <i class="fas fa-heart heart-icon"></i>
+
                 <h1>Fatma Suka Coklat</h1>
-                <i class="fas fa-heart" style="font-size:1.2rem; opacity:0.15; color:var(--love-red);"></i>
+
+                <i
+                    class="fas fa-heart"
+                    style="font-size:1.2rem; opacity:0.15; color:var(--love-red);">
+                </i>
             </div>
+
             <div class="sub-love">
                 <i class="fas fa-cookie-bite"></i>
                 <span>romansa · 2026</span>
                 <i class="fas fa-heart" style="font-size:0.6rem; opacity:0.3;"></i>
             </div>
+
         </header>
 
-        <!-- GAME SECTION -->
+
+        <!-- GAME -->
         <section class="game-love-section">
+
             <div class="game-header">
-                <div class="game-icon"><i class="fas fa-heartbeat"></i></div>
-                <h2><strong>❤️</strong> Cari Pasangan Hati</h2>
-                <span class="game-badge"><i class="fas fa-gamepad"></i> mini game</span>
+
+                <div class="game-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+
+                <h2>
+                    <strong>❤️</strong>
+                    Cari Pasangan Hati
+                </h2>
+
+                <span class="game-badge">
+                    <i class="fas fa-gamepad"></i>
+                    mini game
+                </span>
+
             </div>
 
             <div class="love-match-grid" id="loveGrid">
-                <!-- JS akan mengisi -->
+                <!-- JS mengisi kartu -->
             </div>
 
             <div class="game-status">
+
                 <span class="score">
                     <i class="fas fa-heart"></i>
-                    Pasangan: <strong id="matchCount">0</strong> / 4
+                    Pasangan:
+                    <strong id="matchCount">0</strong> / 4
                 </span>
+
                 <button class="btn-reset-love" id="resetLoveGame">
-                    <i class="fas fa-redo-alt"></i> Ulang
+                    <i class="fas fa-redo-alt"></i>
+                    Ulang
                 </button>
+
             </div>
-            <div style="text-align:center; margin-top:14px; font-size:0.65rem; color:#b8a091; opacity:0.5; letter-spacing:0.3px;">
-                <i class="fas fa-mouse-pointer"></i> klik dua kartu untuk mencocokkan
+
+            <div class="game-instruction">
+                <i class="fas fa-mouse-pointer"></i>
+                klik dua kartu untuk mencocokkan
             </div>
+
         </section>
 
-        <!-- PERSONAL LOVE NOTE + EMAIL SEND -->
+
+        <!-- PESAN PRIBADI -->
         <section class="personal-love-section">
+
             <div class="section-label">
+
                 <i class="fas fa-feather-alt"></i>
+
                 <span>Pesan Pribadi</span>
+
                 <span class="line"></span>
-                <i class="fas fa-pen-fancy" style="color:var(--choco-brown); font-size:0.8rem; opacity:0.3;"></i>
+
+                <i
+                    class="fas fa-pen-fancy"
+                    style="color:var(--choco-brown); font-size:0.8rem; opacity:0.3;">
+                </i>
+
             </div>
 
+
+            <!-- KOTAK PESAN -->
             <div class="love-note-box">
-                <div class="editable-love" contenteditable="true" spellcheck="true" id="loveMessage">
-                    <span style="color:var(--choco-deep);">💕 "Cinta seperti coklat, manis dan sedikit pahit, tapi selalu membuat hati hangat."</span>
-                    <div style="font-size:0.8rem; opacity:0.4; margin-top:8px; font-weight:300; letter-spacing:0.2px;">
+
+                <div
+                    class="editable-love"
+                    contenteditable="true"
+                    spellcheck="true"
+                    id="loveMessage">
+
+                    <span style="color:var(--choco-deep);">
+                        💕 "Cinta seperti coklat, manis dan sedikit pahit, tapi selalu membuat hati hangat."
+                    </span>
+
+                    <div class="note-description">
                         — tulis kata-kata romantis atau pesan untuk pasangan ✨
                     </div>
+
                 </div>
-                <div class="hint-edit"><i class="fas fa-pencil-alt"></i> edit langsung</div>
+
+                <div class="hint-edit">
+                    <i class="fas fa-pencil-alt"></i>
+                    edit langsung
+                </div>
+
             </div>
 
-            <!-- EMAIL SEND dengan Google / Mailto -->
+
+            <!-- EMAIL -->
             <div class="email-send-section">
+
                 <div class="email-header">
+
                     <i class="fas fa-envelope"></i>
+
                     <h4>Kirim Pesan ke Email</h4>
+
                     <span class="badge-email">
-                        <i class="fab fa-google"></i> Gmail
+                        <i class="fab fa-google"></i>
+                        Gmail
                     </span>
+
                 </div>
+
 
                 <div class="email-form-row">
+
                     <div class="email-input-wrap">
+
                         <i class="fas fa-at"></i>
-                        <input type="email" id="recipientEmail" placeholder="email penerima (contoh: Fatma@gmail.com)" />
+
+                        <input
+                            type="email"
+                            id="recipientEmail"
+                            placeholder="email penerima (contoh: Fatma@gmail.com)"
+                        >
+
                     </div>
+
                     <button class="btn-send-email" id="sendEmailBtn">
+
                         <i class="fas fa-paper-plane"></i>
+
                         <span>Kirim via Gmail</span>
+
                     </button>
+
                 </div>
+
 
                 <div class="email-status" id="emailStatus">
+
                     <i class="fas fa-info-circle info"></i>
-                    <span>Pesan akan dibuka di Gmail / aplikasi email Anda</span>
+
+                    <span>
+                        Pesan akan dibuka di Gmail / aplikasi email Anda
+                    </span>
+
                 </div>
 
-                <!-- Informasi tambahan -->
-                <div style="margin-top:0.8rem; font-size:0.65rem; color:#b8a091; opacity:0.5; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-                    <span><i class="fas fa-lock" style="opacity:0.3;"></i> Aman &amp; pribadi</span>
-                    <span><i class="fas fa-globe" style="opacity:0.3;"></i> Kirim ke siapa saja</span>
-                    <span><i class="fas fa-heart" style="opacity:0.3; color:var(--love-red);"></i> Dengan cinta</span>
+
+                <div class="email-info">
+
+                    <span>
+                        <i class="fas fa-lock"></i>
+                        Aman & pribadi
+                    </span>
+
+                    <span>
+                        <i class="fas fa-globe"></i>
+                        Kirim ke siapa saja
+                    </span>
+
+                    <span>
+                        <i class="fas fa-heart"></i>
+                        Dengan cinta
+                    </span>
+
                 </div>
+
             </div>
 
-            <div style="display:flex; justify-content:flex-end; margin-top:8px; gap:14px; font-size:0.6rem; color:#b8a091; opacity:0.6;">
-                <span><i class="fas fa-check-circle" style="color:var(--choco-brown);"></i> otomatis tersimpan</span>
-                <span style="background:rgba(237,227,219,0.3); padding:0.1rem 1rem; border-radius:40px; border:1px solid rgba(220,207,196,0.2);">live edit</span>
+
+            <div class="auto-save">
+
+                <span>
+                    <i class="fas fa-check-circle"></i>
+                    otomatis tersimpan
+                </span>
+
+                <span class="live-edit">
+                    live edit
+                </span>
+
             </div>
+
         </section>
+
 
         <!-- DIVIDER -->
         <div class="chocolate-love-divider">
+
             <span class="divider-line"></span>
+
             <span>
                 <i class="fas fa-heart"></i>
-                coklat &amp; love
+                coklat & love
                 <i class="fas fa-heart"></i>
             </span>
+
             <span class="divider-line right"></span>
+
         </div>
+
 
         <!-- FOOTER -->
         <footer class="footer-love">
+
             <p>
-                <i class="fas fa-quote-left" style="opacity:0.3;"></i>
+                <i class="fas fa-quote-left"></i>
+
                 Cinta dan coklat, dua hal yang selalu membuat hari lebih indah.
-                <i class="fas fa-quote-right" style="opacity:0.3;"></i>
+
+                <i class="fas fa-quote-right"></i>
             </p>
+
             <span class="credit">
+
                 <i class="fas fa-mug-saucer"></i>
+
                 with love · 2026
+
             </span>
+
         </footer>
+
 
         <!-- BOTTOM ACCENT -->
         <div class="bottom-accent">
-            <span></span><span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+
     </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
+
+    <!-- JAVASCRIPT -->
     <script>
-        (function() {
+
+        (function () {
+
             'use strict';
 
-            // =====================================================
-            // 1. GAME LOVE MATCH
-            // =====================================================
+            // ===============================
+            // GAME LOVE MATCH
+            // ===============================
+
             const EMOJIS = ['❤️', '💕', '💖', '💗'];
+
             let cards = [];
             let selected = [];
             let matched = [];
@@ -1241,340 +326,754 @@
             const grid = document.getElementById('loveGrid');
             const matchSpan = document.getElementById('matchCount');
 
+
             function shuffle(array) {
+
                 for (let i = array.length - 1; i > 0; i--) {
+
                     const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
+
+                    [array[i], array[j]] =
+                        [array[j], array[i]];
+
                 }
+
                 return array;
             }
 
+
             function initGame() {
+
                 const deck = [...EMOJIS, ...EMOJIS];
+
                 shuffle(deck);
+
                 cards = deck.map((emoji, index) => ({
+
                     id: index,
                     emoji: emoji,
                     matched: false
+
                 }));
+
                 selected = [];
                 matched = [];
                 matchCount = 0;
+
                 matchSpan.textContent = '0';
+
                 lockBoard = false;
+
                 renderGrid();
             }
 
+
             function renderGrid() {
+
                 grid.innerHTML = '';
+
                 cards.forEach((card, index) => {
+
                     const div = document.createElement('div');
+
                     div.className = 'love-card-item';
+
                     div.dataset.index = index;
+
                     if (card.matched) {
+
                         div.classList.add('matched');
-                        div.innerHTML = `<i class="fas fa-heart" style="color:#b28b72; font-size:1.8rem;"></i>`;
+
+                        div.innerHTML =
+                            '<i class="fas fa-heart matched-heart"></i>';
+
                     } else {
-                        div.innerHTML = `<i class="fas fa-question card-back"></i>`;
+
+                        div.innerHTML =
+                            '<i class="fas fa-question card-back"></i>';
+
                     }
-                    div.addEventListener('click', () => handleCardClick(index));
+
+                    div.addEventListener(
+                        'click',
+                        () => handleCardClick(index)
+                    );
+
                     grid.appendChild(div);
+
                 });
             }
 
+
             function handleCardClick(index) {
+
                 if (lockBoard) return;
+
                 const card = cards[index];
+
                 if (card.matched) return;
+
                 if (selected.includes(index)) return;
 
                 const div = grid.children[index];
-                div.innerHTML = `<span class="card-front" style="font-size:2.2rem;">${card.emoji}</span>`;
-                div.style.background = 'rgba(237, 227, 219, 0.5)';
-                div.style.borderColor = 'var(--choco-brown)';
+
+                div.innerHTML =
+                    `<span class="card-front">${card.emoji}</span>`;
+
+                div.style.background =
+                    'rgba(237, 227, 219, 0.5)';
+
+                div.style.borderColor =
+                    'var(--choco-brown)';
+
                 selected.push(index);
 
+
                 if (selected.length === 2) {
+
                     lockBoard = true;
+
                     const idx1 = selected[0];
                     const idx2 = selected[1];
+
                     const card1 = cards[idx1];
                     const card2 = cards[idx2];
 
+
                     if (card1.emoji === card2.emoji) {
+
                         card1.matched = true;
                         card2.matched = true;
-                        matchCount++;
-                        matchSpan.textContent = matchCount;
 
-                        const div1 = grid.children[idx1];
-                        const div2 = grid.children[idx2];
-                        div1.className = 'love-card-item matched';
-                        div1.innerHTML = `<i class="fas fa-heart" style="color:#b28b72; font-size:1.8rem;"></i>`;
-                        div2.className = 'love-card-item matched';
-                        div2.innerHTML = `<i class="fas fa-heart" style="color:#b28b72; font-size:1.8rem;"></i>`;
+                        matchCount++;
+
+                        matchSpan.textContent =
+                            matchCount;
+
+                        const div1 =
+                            grid.children[idx1];
+
+                        const div2 =
+                            grid.children[idx2];
+
+
+                        div1.className =
+                            'love-card-item matched';
+
+                        div1.innerHTML =
+                            '<i class="fas fa-heart matched-heart"></i>';
+
+
+                        div2.className =
+                            'love-card-item matched';
+
+                        div2.innerHTML =
+                            '<i class="fas fa-heart matched-heart"></i>';
+
 
                         selected = [];
                         lockBoard = false;
 
+
                         if (matchCount === 4) {
+
                             setTimeout(() => {
+
                                 playVictoryTone();
-                                showLoveAlert('❤️ Semua pasangan hati ditemukan!', 'Cinta bersemi sempurna.');
+
+                                showLoveAlert(
+                                    '❤️ Semua pasangan hati ditemukan!',
+                                    'Cinta bersemi sempurna.'
+                                );
+
                             }, 400);
+
                         }
+
+
                     } else {
+
                         setTimeout(() => {
-                            const d1 = grid.children[idx1];
-                            const d2 = grid.children[idx2];
+
+                            const d1 =
+                                grid.children[idx1];
+
+                            const d2 =
+                                grid.children[idx2];
+
+
                             if (!cards[idx1].matched) {
-                                d1.innerHTML = `<i class="fas fa-question card-back"></i>`;
-                                d1.style.background = '#fffcf9';
-                                d1.style.borderColor = 'rgba(220, 207, 196, 0.3)';
+
+                                d1.innerHTML =
+                                    '<i class="fas fa-question card-back"></i>';
+
+                                d1.style.background =
+                                    '#fffcf9';
+
+                                d1.style.borderColor =
+                                    'rgba(220, 207, 196, 0.3)';
                             }
+
+
                             if (!cards[idx2].matched) {
-                                d2.innerHTML = `<i class="fas fa-question card-back"></i>`;
-                                d2.style.background = '#fffcf9';
-                                d2.style.borderColor = 'rgba(220, 207, 196, 0.3)';
+
+                                d2.innerHTML =
+                                    '<i class="fas fa-question card-back"></i>';
+
+                                d2.style.background =
+                                    '#fffcf9';
+
+                                d2.style.borderColor =
+                                    'rgba(220, 207, 196, 0.3)';
                             }
+
+
                             selected = [];
+
                             lockBoard = false;
+
                         }, 700);
+
                     }
                 }
             }
 
-            document.getElementById('resetLoveGame').addEventListener('click', initGame);
 
-            // =====================================================
-            // 2. ALERT CUSTOM
-            // =====================================================
+            document
+                .getElementById('resetLoveGame')
+                .addEventListener('click', initGame);
+
+
+            // ===============================
+            // ALERT
+            // ===============================
+
             function showLoveAlert(title, message) {
-                const overlay = document.createElement('div');
-                overlay.style.cssText = `
-                            position: fixed; inset: 0; background: rgba(77, 52, 34, 0.3);
-                            backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center;
-                            z-index: 9999; animation: fadeIn 0.4s ease;
-                        `;
-                const box = document.createElement('div');
-                box.style.cssText = `
-                            background: #fffcf9; border-radius: 40px; padding: 2.4rem 2.8rem 2.2rem;
-                            max-width: 420px; width: 90%; text-align: center;
-                            box-shadow: 0 32px 80px rgba(77, 52, 34, 0.25);
-                            border: 1px solid rgba(220, 207, 196, 0.2);
-                            animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-                        `;
+
+                const overlay =
+                    document.createElement('div');
+
+                overlay.className =
+                    'love-alert-overlay';
+
+
+                const box =
+                    document.createElement('div');
+
+                box.className =
+                    'love-alert-box';
+
+
                 box.innerHTML = `
-                            <div style="font-size: 3rem; margin-bottom: 0.8rem;">❤️</div>
-                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #4d3422; margin-bottom: 0.4rem;">${title}</h3>
-                            <p style="color: #6b4c34; font-size: 1rem; opacity: 0.7; margin-bottom: 1.6rem;">${message}</p>
-                            <button onclick="this.closest('div[style]').remove()" style="
-                                background: #a67c5b; color: white; border: none;
-                                padding: 0.6rem 2.4rem; border-radius: 60px;
-                                font-size: 0.9rem; font-weight: 500; cursor: pointer;
-                                transition: 0.2s; box-shadow: 0 4px 16px rgba(166, 124, 91, 0.2);
-                            " onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-                                <i class="fas fa-heart"></i> OK
-                            </button>
-                        `;
+
+                    <div class="alert-heart">
+                        ❤️
+                    </div>
+
+                    <h3>
+                        ${title}
+                    </h3>
+
+                    <p>
+                        ${message}
+                    </p>
+
+                    <button class="alert-button">
+                        <i class="fas fa-heart"></i>
+                        OK
+                    </button>
+
+                `;
+
+
                 overlay.appendChild(box);
+
                 document.body.appendChild(overlay);
 
+
+                box.querySelector('.alert-button')
+                    .addEventListener('click', () => {
+
+                        overlay.remove();
+
+                    });
+
+
                 setTimeout(() => {
-                    if (overlay.parentNode) overlay.remove();
+
+                    if (overlay.parentNode) {
+
+                        overlay.remove();
+
+                    }
+
                 }, 5000);
+
             }
 
-            // =====================================================
-            // 3. MUSIK
-            // =====================================================
+
+            // ===============================
+            // MUSIK
+            // ===============================
+
             function playLoveTone() {
+
                 try {
-                    const ctx = new(window.AudioContext || window.webkitAudioContext)();
-                    const notes = [523, 587, 659, 784, 880, 784, 659, 587];
+
+                    const ctx =
+                        new (
+                            window.AudioContext ||
+                            window.webkitAudioContext
+                        )();
+
+                    const notes =
+                        [523, 587, 659, 784, 880, 784, 659, 587];
+
                     let time = 0;
-                    notes.forEach((freq, i) => {
-                        const osc = ctx.createOscillator();
-                        const gain = ctx.createGain();
+
+
+                    notes.forEach(freq => {
+
+                        const osc =
+                            ctx.createOscillator();
+
+                        const gain =
+                            ctx.createGain();
+
+
                         osc.type = 'sine';
+
                         osc.frequency.value = freq;
-                        gain.gain.setValueAtTime(0.07, ctx.currentTime + time);
-                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + time + 0.28);
+
+
+                        gain.gain.setValueAtTime(
+                            0.07,
+                            ctx.currentTime + time
+                        );
+
+                        gain.gain.exponentialRampToValueAtTime(
+                            0.001,
+                            ctx.currentTime + time + 0.28
+                        );
+
+
                         osc.connect(gain);
+
                         gain.connect(ctx.destination);
-                        osc.start(ctx.currentTime + time);
-                        osc.stop(ctx.currentTime + time + 0.28);
+
+
+                        osc.start(
+                            ctx.currentTime + time
+                        );
+
+                        osc.stop(
+                            ctx.currentTime + time + 0.28
+                        );
+
+
                         time += 0.16;
+
                     });
+
                 } catch (_) {}
+
             }
+
 
             function playVictoryTone() {
+
                 try {
-                    const ctx = new(window.AudioContext || window.webkitAudioContext)();
-                    const melody = [523, 659, 784, 1047, 880, 784];
+
+                    const ctx =
+                        new (
+                            window.AudioContext ||
+                            window.webkitAudioContext
+                        )();
+
+                    const melody =
+                        [523, 659, 784, 1047, 880, 784];
+
                     let time = 0;
-                    melody.forEach((freq, i) => {
-                        const osc = ctx.createOscillator();
-                        const gain = ctx.createGain();
+
+
+                    melody.forEach(freq => {
+
+                        const osc =
+                            ctx.createOscillator();
+
+                        const gain =
+                            ctx.createGain();
+
+
                         osc.type = 'sine';
+
                         osc.frequency.value = freq;
-                        gain.gain.setValueAtTime(0.08, ctx.currentTime + time);
-                        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + time + 0.3);
+
+
+                        gain.gain.setValueAtTime(
+                            0.08,
+                            ctx.currentTime + time
+                        );
+
+                        gain.gain.exponentialRampToValueAtTime(
+                            0.001,
+                            ctx.currentTime + time + 0.3
+                        );
+
+
                         osc.connect(gain);
+
                         gain.connect(ctx.destination);
-                        osc.start(ctx.currentTime + time);
-                        osc.stop(ctx.currentTime + time + 0.3);
+
+
+                        osc.start(
+                            ctx.currentTime + time
+                        );
+
+                        osc.stop(
+                            ctx.currentTime + time + 0.3
+                        );
+
+
                         time += 0.2;
+
                     });
+
                 } catch (_) {}
+
             }
 
-            document.addEventListener('click', function firstClick() {
-                playLoveTone();
-                document.removeEventListener('click', firstClick);
-            }, { once: true });
 
-            // =====================================================
-            // 4. AUTO SAVE NOTE (localStorage)
-            // =====================================================
-            const noteEl = document.querySelector('.editable-love');
+            document.addEventListener(
+                'click',
+                function firstClick() {
+
+                    playLoveTone();
+
+                    document.removeEventListener(
+                        'click',
+                        firstClick
+                    );
+
+                },
+                { once: true }
+            );
+
+
+            // ===============================
+            // AUTO SAVE
+            // ===============================
+
+            const noteEl =
+                document.querySelector('.editable-love');
+
+
             if (noteEl) {
-                const saved = localStorage.getItem('loveNote_content');
+
+                const saved =
+                    localStorage.getItem(
+                        'loveNote_content'
+                    );
+
+
                 if (saved) {
+
                     noteEl.innerHTML = saved;
+
                 }
-                noteEl.addEventListener('input', function() {
-                    localStorage.setItem('loveNote_content', this.innerHTML);
-                });
-                noteEl.addEventListener('blur', function() {
-                    localStorage.setItem('loveNote_content', this.innerHTML);
-                });
+
+
+                noteEl.addEventListener(
+                    'input',
+                    function () {
+
+                        localStorage.setItem(
+                            'loveNote_content',
+                            this.innerHTML
+                        );
+
+                    }
+                );
+
+
+                noteEl.addEventListener(
+                    'blur',
+                    function () {
+
+                        localStorage.setItem(
+                            'loveNote_content',
+                            this.innerHTML
+                        );
+
+                    }
+                );
+
             }
 
-            // =====================================================
-            // 5. SEND EMAIL via Gmail / Mailto
-            // =====================================================
-            const sendBtn = document.getElementById('sendEmailBtn');
-            const emailInput = document.getElementById('recipientEmail');
-            const statusEl = document.getElementById('emailStatus');
 
-            // Toast notification
-            function showToast(title, message, type = 'success') {
-                const existing = document.querySelector('.toast-notification');
-                if (existing) existing.remove();
+            // ===============================
+            // EMAIL
+            // ===============================
 
-                const toast = document.createElement('div');
-                toast.className = `toast-notification ${type}`;
-                const icon = type === 'success' ? '❤️' : type === 'info' ? 'ℹ️' : '😅';
+            const sendBtn =
+                document.getElementById('sendEmailBtn');
+
+            const emailInput =
+                document.getElementById('recipientEmail');
+
+            const statusEl =
+                document.getElementById('emailStatus');
+
+
+            function showToast(
+                title,
+                message,
+                type = 'success'
+            ) {
+
+                const existing =
+                    document.querySelector(
+                        '.toast-notification'
+                    );
+
+
+                if (existing) {
+
+                    existing.remove();
+
+                }
+
+
+                const toast =
+                    document.createElement('div');
+
+                toast.className =
+                    `toast-notification ${type}`;
+
+
+                const icon =
+                    type === 'success'
+                        ? '❤️'
+                        : type === 'info'
+                            ? 'ℹ️'
+                            : '😅';
+
+
                 toast.innerHTML = `
-                            <span class="toast-icon">${icon}</span>
-                            <div class="toast-content">
-                                <div class="toast-title">${title}</div>
-                                <div class="toast-message">${message}</div>
-                            </div>
-                            <button class="toast-close">&times;</button>
-                        `;
+
+                    <span class="toast-icon">
+                        ${icon}
+                    </span>
+
+                    <div class="toast-content">
+
+                        <div class="toast-title">
+                            ${title}
+                        </div>
+
+                        <div class="toast-message">
+                            ${message}
+                        </div>
+
+                    </div>
+
+                    <button class="toast-close">
+                        &times;
+                    </button>
+
+                `;
+
+
                 document.body.appendChild(toast);
 
+
                 requestAnimationFrame(() => {
+
                     toast.classList.add('show');
+
                 });
 
-                toast.querySelector('.toast-close').addEventListener('click', () => {
-                    toast.classList.remove('show');
-                    setTimeout(() => toast.remove(), 400);
-                });
+
+                toast.querySelector(
+                    '.toast-close'
+                ).addEventListener(
+                    'click',
+                    () => {
+
+                        toast.classList.remove('show');
+
+                        setTimeout(
+                            () => toast.remove(),
+                            400
+                        );
+
+                    }
+                );
+
 
                 setTimeout(() => {
+
                     toast.classList.remove('show');
-                    setTimeout(() => toast.remove(), 400);
+
+                    setTimeout(
+                        () => toast.remove(),
+                        400
+                    );
+
                 }, 5000);
+
             }
 
-            sendBtn.addEventListener('click', function() {
-                const email = emailInput.value.trim();
-                const message = noteEl ? noteEl.innerHTML : '';
 
-                // Validasi email
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!email) {
-                    showToast('Email kosong', 'Silakan masukkan alamat email penerima.', 'error');
-                    statusEl.innerHTML =
-                        `<i class="fas fa-exclamation-circle error"></i><span class="error">Email tidak boleh kosong</span>`;
-                    return;
+            sendBtn.addEventListener(
+                'click',
+                function () {
+
+                    const email =
+                        emailInput.value.trim();
+
+                    const message =
+                        noteEl
+                            ? noteEl.innerHTML
+                            : '';
+
+
+                    const emailRegex =
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                    if (!email) {
+
+                        showToast(
+                            'Email kosong',
+                            'Silakan masukkan alamat email penerima.',
+                            'error'
+                        );
+
+                        statusEl.innerHTML = `
+                            <i class="fas fa-exclamation-circle error"></i>
+                            <span class="error">
+                                Email tidak boleh kosong
+                            </span>
+                        `;
+
+                        return;
+
+                    }
+
+
+                    if (!emailRegex.test(email)) {
+
+                        showToast(
+                            'Email tidak valid',
+                            'Masukkan alamat email yang benar.',
+                            'error'
+                        );
+
+                        statusEl.innerHTML = `
+                            <i class="fas fa-exclamation-circle error"></i>
+                            <span class="error">
+                                Format email tidak valid
+                            </span>
+                        `;
+
+                        return;
+
+                    }
+
+
+                    const cleanMessage =
+                        message
+                            .replace(/<[^>]*>/g, '')
+                            .trim();
+
+
+                    if (!cleanMessage) {
+
+                        showToast(
+                            'Pesan kosong',
+                            'Silakan tulis pesan terlebih dahulu.',
+                            'error'
+                        );
+
+                        return;
+
+                    }
+
+
+                    const subject =
+                        encodeURIComponent(
+                            '💕 Pesan Cinta dari Love & Coklat 💕'
+                        );
+
+
+                    const body =
+                        encodeURIComponent(
+                            `${cleanMessage}\n\n` +
+                            `-----------------------------------\n` +
+                            `💕 Dikirim dari: Love & Coklat\n` +
+                            `✨ Romansa · 2026\n` +
+                            `🌹 Dengan cinta untukmu ❤️`
+                        );
+
+
+                    const mailtoLink =
+                        `mailto:${email}?subject=${subject}&body=${body}`;
+
+
+                    statusEl.innerHTML = `
+                        <i class="fas fa-envelope info"></i>
+                        <span>
+                            Membuka email untuk
+                            <strong>${email}</strong>...
+                        </span>
+                    `;
+
+
+                    showToast(
+                        '📧 Buka Email',
+                        `Pesan akan dibuka untuk ${email}`,
+                        'info'
+                    );
+
+
+                    window.open(
+                        mailtoLink,
+                        '_blank'
+                    );
+
+
+                    setTimeout(() => {
+
+                        statusEl.innerHTML = `
+                            <i class="fas fa-check-circle success"></i>
+                            <span class="success">
+                                ✅ Email dibuka. Kirim pesan Anda!
+                            </span>
+                        `;
+
+                    }, 3000);
+
+
+                    setTimeout(() => {
+
+                        emailInput.value = '';
+
+                    }, 5000);
+
                 }
-                if (!emailRegex.test(email)) {
-                    showToast('Email tidak valid', 'Masukkan alamat email yang benar (contoh: nama@gmail.com).', 'error');
-                    statusEl.innerHTML =
-                        `<i class="fas fa-exclamation-circle error"></i><span class="error">Format email tidak valid</span>`;
-                    return;
-                }
+            );
 
-                // Cek pesan
-                const cleanMessage = message.replace(/<[^>]*>/g, '').trim();
-                if (!cleanMessage || cleanMessage === '💌 Tulis pesan cinta atau kata-kata romantis di sini...' ||
-                    cleanMessage.includes('tulis kata-kata romantis')) {
-                    showToast('Pesan kosong', 'Silakan tulis pesan cinta terlebih dahulu.', 'error');
-                    statusEl.innerHTML =
-                        `<i class="fas fa-exclamation-circle error"></i><span class="error">Pesan masih kosong</span>`;
-                    return;
-                }
 
-                // Buat mailto link
-                const subject = encodeURIComponent('💕 Pesan Cinta dari Love & Coklat 💕');
-                const body = encodeURIComponent(
-                    `${cleanMessage}\n\n` +
-                    `-----------------------------------\n` +
-                    `💕 Dikirim dari: Love & Coklat\n` +
-                    `✨ Romansa · 2026\n` +
-                    `🌹 Dengan cinta untukmu ❤️`
-                );
-                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+            // ===============================
+            // MULAI GAME
+            // ===============================
 
-                // Update status
-                statusEl.innerHTML =
-                    `<i class="fas fa-envelope info"></i><span>Membuka Gmail/Aplikasi email untuk <strong>${email}</strong>...</span>`;
-
-                // Tampilkan notifikasi
-                showToast(
-                    '📧 Buka Email',
-                    `Pesan akan dibuka di Gmail/aplikasi email Anda. Kirim ke ${email}`,
-                    'info'
-                );
-
-                // Buka mailto di tab baru atau window
-                window.open(mailtoLink, '_blank');
-
-                // Reset status setelah beberapa detik
-                setTimeout(() => {
-                    statusEl.innerHTML =
-                        `<i class="fas fa-check-circle success"></i><span class="success">✅ Email dibuka. Kirim pesan Anda!</span>`;
-                }, 3000);
-
-                // Kosongkan input email setelah sukses
-                setTimeout(() => {
-                    emailInput.value = '';
-                }, 5000);
-            });
-
-            // =====================================================
-            // 6. INISIALISASI
-            // =====================================================
             initGame();
 
-            // Tambahkan style untuk animasi
-            const styleSheet = document.createElement('style');
-            styleSheet.textContent = `
-                        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-                        @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-                    `;
-            document.head.appendChild(styleSheet);
-
-            console.log('❤️ Love & Coklat · Premium with Gmail/Mailto');
-            console.log('📧 Kirim pesan cinta langsung dari browser Anda!');
-
         })();
+
     </script>
+
 </body>
 </html>
